@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bangalore Doorstep Massage Website
 
-## Getting Started
+Production-ready, mobile-first marketing site for bangaloredoorstepmassage.online.
 
-First, run the development server:
+## Tech Stack
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Zod validation
+- Netlify Forms (no backend required)
+- Playwright (smoke test)
 
+## Local Development
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
+```bash
+npm run build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Lint & Format
+```bash
+npm run lint
+npm run format
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Typecheck
+```bash
+npm run typecheck
+```
 
-## Learn More
+## Tests (Smoke E2E)
+```bash
+npm run test:e2e
+```
+Note: Run `npx playwright install` the first time to download browsers.
 
-To learn more about Next.js, take a look at the following resources:
+## Configuration (TODOs)
+Update these before launch:
+- WhatsApp number: `lib/site.ts` or `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env`.
+- Contact email: `lib/site.ts` or `NEXT_PUBLIC_CONTACT_EMAIL` in `.env`.
+- Pricing and policy text in `content/pricing.ts` and `app/about/page.tsx`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Netlify Deployment
+1. Push this repo to GitHub.
+2. In Netlify, "Add new site" -> "Import an existing project".
+3. Select the repo and keep:
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+   - Node version: `20` (set via `netlify.toml`)
+4. Deploy site.
+5. In Netlify -> Site settings -> Forms, verify the "booking" form is detected.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Namecheap DNS Instructions
+Point `bangaloredoorstepmassage.online` to Netlify:
+- Apex/root record:
+  - Type: ALIAS (or ANAME)
+  - Host: `@`
+  - Value: `apex-loadbalancer.netlify.com`
+- `www` record:
+  - Type: CNAME
+  - Host: `www`
+  - Value: `<your-netlify-site>.netlify.app`
 
-## Deploy on Vercel
+Important:
+- Remove any conflicting A, CNAME, or URL redirect records for `@` or `www`.
+- DNS propagation can take a few minutes to 24 hours.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Runbook
+Local run commands:
+```bash
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Netlify import steps:
+1. Connect repo -> set build command `npm run build` -> publish `.next`.
+2. Confirm Netlify Forms detects the `booking` form.
+3. Trigger a production deploy.
+
+Domain verification steps:
+1. Add the Namecheap DNS records above.
+2. In Netlify -> Domain management, add `bangaloredoorstepmassage.online`.
+3. Verify DNS and wait for HTTPS provisioning.
+
+Troubleshooting checklist:
+- `npm run build` passes locally.
+- Node version is 20+.
+- Netlify shows the Next.js plugin enabled.
+- DNS records do not conflict (remove old A/CNAME/URL redirects).
+- WhatsApp number and contact email are updated.
