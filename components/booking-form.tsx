@@ -66,13 +66,14 @@ export function BookingForm() {
     try {
       const formData = new URLSearchParams();
       formData.append("form-name", "booking");
+      formData.append("bot-field", "");
       (Object.keys(parsed.data) as Array<keyof BookingFormValues>).forEach(
         (key) => {
           formData.append(key, parsed.data[key] ?? "");
         }
       );
 
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: formData.toString(),
@@ -108,8 +109,6 @@ export function BookingForm() {
         <form
           name="booking"
           method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="space-y-4"
         >
