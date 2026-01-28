@@ -50,7 +50,7 @@ Optional overrides:
    - Publish directory: `.next`
    - Node version: `20` (set via `netlify.toml`)
 4. Deploy site.
-5. In Netlify -> Site settings -> Forms, verify the "booking" form is detected.
+5. In Netlify -> Site settings -> Forms, verify the "booking" and "therapist-application" forms are detected.
 
 ## Namecheap DNS Instructions
 Point `bangaloredoorstepmassage.online` to Netlify:
