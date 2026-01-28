@@ -87,6 +87,14 @@ export default function PricingPage() {
           Final quotes depend on therapist availability, travel distance, and
           time of day. Ask us on WhatsApp for an exact total.
         </p>
+        <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-xs text-slate-600">
+          <p className="font-semibold text-slate-900">Cancellation policy</p>
+          <p className="mt-2">
+            Free reschedule up to 12 hours before the appointment. 50% fee
+            applies within 12 hours, and 100% applies if the therapist is
+            dispatched or arrives at the location.
+          </p>
+        </div>
       </section>
     </div>
   );

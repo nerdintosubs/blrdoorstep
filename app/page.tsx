@@ -99,8 +99,7 @@ export default function HomePage() {
                 </p>
               </div>
               <p className="text-xs text-slate-500">
-                TODO: Replace placeholder WhatsApp number{" "}
-                <strong>{siteConfig.whatsappNumber}</strong> before launch.
+                Booking support: WhatsApp {siteConfig.whatsappNumber}.
               </p>
             </div>
           </div>

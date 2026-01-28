@@ -109,9 +109,24 @@ export default function AboutPage() {
             </ul>
           </div>
         </div>
-        <p className="text-xs text-slate-500">
-          TODO: Provide official policy text and cancellation terms.
-        </p>
+        <div className="grid gap-4 text-sm text-slate-700 sm:grid-cols-2">
+          <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-4">
+            <p className="font-semibold text-slate-900">Cancellation & reschedule</p>
+            <ul className="mt-2 list-disc space-y-2 pl-5">
+              <li>Free reschedule up to 12 hours before the slot.</li>
+              <li>50% fee within 12 hours of the appointment.</li>
+              <li>100% fee if the therapist is dispatched or arrives.</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-4">
+            <p className="font-semibold text-slate-900">Payments & add-ons</p>
+            <ul className="mt-2 list-disc space-y-2 pl-5">
+              <li>Payment due at the end of the session.</li>
+              <li>Add-ons and after-hours requests priced upfront.</li>
+              <li>Travel surcharges may apply for outer zones.</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   );

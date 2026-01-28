@@ -61,7 +61,7 @@ export function SiteFooter() {
               <p>Mon-Fri: {siteConfig.hours.weekdays}</p>
               <p>Sat-Sun: {siteConfig.hours.weekends}</p>
               <p className="text-xs text-slate-500">
-                TODO: Confirm public holiday schedule.
+                Public holidays: by appointment.
               </p>
             </div>
           </div>

@@ -79,7 +79,7 @@ export default function ServicesPage() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-slate-500">
-            TODO: Confirm add-on pricing and availability.
+            Add-ons are subject to therapist availability.
           </p>
         </div>
         <div className="surface-card p-6 sm:p-7">

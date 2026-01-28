@@ -1,7 +1,7 @@
 export const pricingTiers = [
   {
     name: "Essential Calm",
-    price: "INR 1,499",
+    price: "INR 3,299",
     duration: "60 mins",
     description: "Full-body relaxation or Swedish massage.",
     features: [
@@ -13,7 +13,7 @@ export const pricingTiers = [
   },
   {
     name: "Deep Relief",
-    price: "INR 1,999",
+    price: "INR 3,899",
     duration: "60 mins",
     description: "Deep tissue or sports recovery focus.",
     features: [
@@ -26,7 +26,7 @@ export const pricingTiers = [
   },
   {
     name: "Extended Recovery",
-    price: "INR 2,699",
+    price: "INR 4,899",
     duration: "90 mins",
     description: "Extended session for full-body reset.",
     features: [
@@ -39,4 +39,4 @@ export const pricingTiers = [
 ];
 
 export const pricingDisclaimer =
-  "Prices shown are starting rates and may vary by location, duration, or add-ons. TODO: Confirm final pricing and taxes.";
+  "Prices include GST and standard travel within core Bangalore areas. After-hours bookings or extended travel may incur a surcharge shared at confirmation.";

@@ -44,10 +44,10 @@ export const services = [
 ];
 
 export const addOns = [
-  "Hot towel compress",
-  "Targeted foot reflexology",
-  "Extended scalp massage",
-  "Extra stretch & mobility time",
+  "Hot towel compress (INR 299)",
+  "Targeted foot reflexology (INR 499)",
+  "Extended scalp massage (INR 399)",
+  "Extra stretch and mobility time (INR 399)",
 ];
 
 export const serviceAreasExtended = [

@@ -1,9 +1,9 @@
 import { siteConfig } from "@/lib/site";
 
 export function LocalBusinessSchema() {
-  const telephone = siteConfig.whatsappNumber.startsWith("+")
-    ? siteConfig.whatsappNumber
-    : `+${siteConfig.whatsappNumber}`;
+  const telephone = siteConfig.normalizedWhatsappNumber.startsWith("+")
+    ? siteConfig.normalizedWhatsappNumber
+    : `+${siteConfig.normalizedWhatsappNumber}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",
@@ -16,6 +16,7 @@ export function LocalBusinessSchema() {
     },
     serviceType: "Doorstep massage therapy",
     telephone,
+    priceRange: "INR 3299-4899",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Bengaluru",

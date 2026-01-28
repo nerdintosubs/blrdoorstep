@@ -37,11 +37,10 @@ npm run test:e2e
 ```
 Note: Run `npx playwright install` the first time to download browsers.
 
-## Configuration (TODOs)
-Update these before launch:
+## Configuration
+Optional overrides:
 - WhatsApp number: `lib/site.ts` or `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env`.
 - Contact email: `lib/site.ts` or `NEXT_PUBLIC_CONTACT_EMAIL` in `.env`.
-- Pricing and policy text in `content/pricing.ts` and `app/about/page.tsx`.
 
 ## Netlify Deployment
 1. Push this repo to GitHub.

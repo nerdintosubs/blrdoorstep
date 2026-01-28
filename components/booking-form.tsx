@@ -7,7 +7,6 @@ import {
   defaultBookingValues,
   type BookingFormValues,
 } from "@/lib/booking";
-import { siteConfig } from "@/lib/site";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -103,8 +102,7 @@ export function BookingForm() {
             Share your details and we will confirm on WhatsApp
           </h3>
           <p className="mt-2 text-sm text-slate-600">
-            TODO: Replace the WhatsApp number ({siteConfig.whatsappNumber}) with
-            your official business number before launch.
+            We typically respond within 10-15 minutes during working hours.
           </p>
         </div>
         <form

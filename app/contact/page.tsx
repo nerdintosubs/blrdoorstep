@@ -39,7 +39,7 @@ export default function ContactPage() {
           </a>
         </div>
         <p className="text-xs text-slate-500">
-          TODO: Confirm WhatsApp number and contact email before launch.
+          We reply quickly on WhatsApp during operating hours.
         </p>
       </section>
 
