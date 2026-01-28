@@ -7,7 +7,9 @@ test("homepage loads and primary CTA is visible", async ({ page }) => {
       name: /doorstep massage in bangalore/i,
     })
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /book on whatsapp/i })).toBeVisible();
+  await expect(
+    page.getByRole("main").getByRole("link", { name: /book on whatsapp/i }).first()
+  ).toBeVisible();
 });
 
 test("services page is reachable", async ({ page }) => {
