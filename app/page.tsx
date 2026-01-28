@@ -3,28 +3,33 @@ import {
   benefits,
   faqs,
   featuredServices,
+  howItWorks,
   safetyPoints,
+  serviceTags,
+  stats,
+  therapistHighlights,
   testimonials,
+  trustBadges,
 } from "@/content/home";
-import { pricingDisclaimer, pricingTiers } from "@/content/pricing";
-import { whatsappLink, siteConfig } from "@/lib/site";
+import { membershipPlans, pricingDisclaimer, pricingTiers } from "@/content/pricing";
+import { IconLocation, IconPhone } from "@/components/icons";
+import { siteConfig, whatsappLink } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl space-y-24">
-      <section className="surface-glow relative overflow-hidden rounded-[28px] border border-white/40 bg-white/80 px-6 py-16 shadow-[0_30px_80px_rgba(15,118,110,0.18)] sm:px-10 lg:px-16">
-        <div className="absolute -left-16 -top-16 h-48 w-48 rounded-full bg-emerald-200/50 blur-3xl" />
-        <div className="relative grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="grid-dots surface-glow relative overflow-hidden rounded-[32px] border border-white/40 bg-white/85 px-6 py-16 shadow-[0_32px_90px_rgba(15,118,110,0.2)] sm:px-10 lg:px-16">
+        <div className="absolute -left-20 -top-20 h-56 w-56 rounded-full bg-emerald-200/60 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-48 w-48 rounded-full bg-amber-100/60 blur-3xl" />
+        <div className="relative grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-6">
-            <span className="fade-up inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Professional | Non-explicit | Wellness
-            </span>
+            <span className="section-label fade-up">Professional | Wellness</span>
             <h1 className="fade-up delay-1 font-display text-4xl text-slate-900 sm:text-5xl lg:text-6xl">
-              Doorstep massage in Bangalore, crafted for deep relief and calm.
+              Doorstep massage in Bangalore, designed for deep relief and calm.
             </h1>
             <p className="fade-up delay-2 max-w-xl text-base text-slate-600 sm:text-lg">
-              {siteConfig.description} We bring a hygienic setup, fresh linens,
-              and a verified therapist so you can unwind at home.
+              {siteConfig.description} We arrive with a sanitized table, fresh
+              linens, and a verified therapist so you can unwind in your space.
             </p>
             <div className="fade-up delay-3 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
@@ -42,65 +47,51 @@ export default function HomePage() {
                 Use booking form
               </Link>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  title: "Flexible slots",
-                  description: "Morning to late evening availability.",
-                },
-                {
-                  title: "Verified therapists",
-                  description: "Background-checked and trained.",
-                },
-                {
-                  title: "Hygiene-first",
-                  description: "Sanitized table and fresh linens.",
-                },
-              ].map((item) => (
+            <div className="grid gap-3 sm:grid-cols-3">
+              {trustBadges.map((badge) => (
                 <div
-                  key={item.title}
-                  className="rounded-2xl border border-emerald-100 bg-white px-4 py-4 text-sm text-slate-700 shadow-sm"
+                  key={badge}
+                  className="hero-ring rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-                    {item.title}
-                  </p>
-                  <p className="mt-2 text-sm text-slate-600">
-                    {item.description}
-                  </p>
+                  {badge}
                 </div>
               ))}
             </div>
           </div>
-          <div className="surface-card relative overflow-hidden p-6 sm:p-8">
-            <div className="absolute -right-10 top-6 h-32 w-32 rounded-full bg-amber-100 blur-3xl" />
+          <div className="glass-card relative overflow-hidden p-6 sm:p-8">
+            <div className="absolute -right-10 -top-6 h-32 w-32 rounded-full bg-emerald-100 blur-3xl" />
             <div className="relative space-y-6">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Quick booking snapshot
+                Booking snapshot
               </p>
               <div className="space-y-3 text-sm text-slate-700">
-                <div className="flex items-start justify-between gap-4">
-                  <p className="font-medium text-slate-900">Avg. response</p>
-                  <p className="text-slate-600">Within 10 minutes</p>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <p className="font-medium text-slate-900">Service radius</p>
-                  <p className="text-slate-600">Across Bangalore</p>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <p className="font-medium text-slate-900">Setup time</p>
-                  <p className="text-slate-600">15 minutes</p>
-                </div>
+                {stats.map((stat) => (
+                  <div key={stat.label} className="flex items-start justify-between gap-6">
+                    <div>
+                      <p className="font-medium text-slate-900">{stat.label}</p>
+                      <p className="text-xs text-slate-500">{stat.description}</p>
+                    </div>
+                    <span className="stat-pill">{stat.value}</span>
+                  </div>
+                ))}
               </div>
               <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-4 text-sm text-emerald-900">
-                <p className="font-semibold">Preferred for professionals</p>
+                <p className="font-semibold">Serving professionals across Bangalore</p>
                 <p className="mt-2 text-emerald-800">
-                  We serve working professionals and families seeking safe,
-                  respectful wellness care.
+                  Our therapists specialize in desk stress, recovery, and
+                  relaxation sessions.
                 </p>
               </div>
-              <p className="text-xs text-slate-500">
-                Booking support: WhatsApp {siteConfig.whatsappNumber}.
-              </p>
+              <div className="space-y-2 text-xs text-slate-500">
+                <p className="flex items-center gap-2">
+                  <IconPhone className="h-4 w-4 text-emerald-600" />
+                  {siteConfig.phoneDisplay}
+                </p>
+                <p className="flex items-center gap-2">
+                  <IconLocation className="h-4 w-4 text-emerald-600" />
+                  Bangalore service areas
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -109,9 +100,7 @@ export default function HomePage() {
       <section className="space-y-10">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Why choose us
-            </p>
+            <p className="section-label">Why choose us</p>
             <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
               A wellness team you can trust in your home.
             </h2>
@@ -130,20 +119,60 @@ export default function HomePage() {
               <h3 className="mt-4 font-display text-xl text-slate-900">
                 {benefit.title}
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                {benefit.description}
-              </p>
+              <p className="mt-2 text-sm text-slate-600">{benefit.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="surface-card space-y-6 p-6 sm:p-7">
+          <p className="section-label">How it works</p>
+          <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
+            Simple booking, premium service.
+          </h2>
+          <div className="space-y-4">
+            {howItWorks.map((step, index) => (
+              <div key={step.title} className="flex gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-sm font-semibold text-emerald-700">
+                  {index + 1}
+                </div>
+                <div>
+                  <p className="text-base font-semibold text-slate-900">
+                    {step.title}
+                  </p>
+                  <p className="text-sm text-slate-600">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="glass-card grid gap-4 p-6 sm:p-7">
+          <p className="section-label">Best for</p>
+          <h3 className="font-display text-2xl text-slate-900">
+            Sessions tailored to your lifestyle.
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {serviceTags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-emerald-100 bg-white px-3 py-2 text-xs font-semibold text-emerald-800"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p className="text-sm text-slate-600">
+            Share your focus area and preferred pressure in the booking form or
+            WhatsApp chat.
+          </p>
         </div>
       </section>
 
       <section className="space-y-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Signature services
-            </p>
+            <p className="section-label">Signature services</p>
             <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
               Focused therapies, tailored to your body.
             </h2>
@@ -164,9 +193,7 @@ export default function HomePage() {
               <h3 className="mt-3 font-display text-xl text-slate-900">
                 {service.title}
               </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                {service.description}
-              </p>
+              <p className="mt-2 text-sm text-slate-600">{service.description}</p>
             </div>
           ))}
         </div>
@@ -174,9 +201,7 @@ export default function HomePage() {
 
       <section className="space-y-8">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Transparent pricing
-          </p>
+          <p className="section-label">Transparent pricing</p>
           <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
             Clear tiers with flexibility for your needs.
           </h2>
@@ -216,13 +241,27 @@ export default function HomePage() {
           ))}
         </div>
         <p className="text-xs text-slate-500">{pricingDisclaimer}</p>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {membershipPlans.map((plan) => (
+            <div key={plan.name} className="glass-card p-6 sm:p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
+                {plan.sessions}
+              </p>
+              <h3 className="mt-3 font-display text-2xl text-slate-900">
+                {plan.name}
+              </h3>
+              <p className="mt-2 text-2xl font-semibold text-slate-900">
+                {plan.price}
+              </p>
+              <p className="mt-2 text-sm text-slate-600">{plan.description}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Client stories
-          </p>
+          <p className="section-label">Client stories</p>
           <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
             Calm, clarity, and relief - delivered to your doorstep.
           </h2>
@@ -240,9 +279,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="surface-card space-y-6 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Trust & safety
-          </p>
+          <p className="section-label">Trust and safety</p>
           <h3 className="font-display text-2xl text-slate-900">
             Respectful, professional, and secure.
           </h3>
@@ -262,9 +299,7 @@ export default function HomePage() {
 
       <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="surface-card p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            FAQs
-          </p>
+          <p className="section-label">FAQs</p>
           <h3 className="font-display text-2xl text-slate-900">
             Quick answers before you book.
           </h3>
@@ -284,15 +319,13 @@ export default function HomePage() {
         </div>
         <div className="surface-card flex flex-col justify-between gap-6 p-6 sm:p-7">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Ready to unwind?
-            </p>
+            <p className="section-label">Ready to unwind?</p>
             <h3 className="font-display text-2xl text-slate-900">
               Book in minutes on WhatsApp.
             </h3>
             <p className="mt-2 text-sm text-slate-600">
               Share your location and preferred time, and we will confirm the
-              therapist details instantly.
+              therapist details quickly.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -311,6 +344,35 @@ export default function HomePage() {
               Contact us
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="glass-card grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <p className="section-label">Join our team</p>
+          <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
+            Hiring professional female therapists in Bangalore.
+          </h2>
+          <p className="mt-3 text-sm text-slate-600">
+            We provide steady bookings, safety protocols, and a respectful work
+            environment for therapists who care about client outcomes.
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
+            {therapistHighlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col items-start justify-between gap-6">
+          <p className="text-sm text-slate-600">
+            Apply in under 3 minutes. Our team responds within 24 hours.
+          </p>
+          <Link
+            href="/careers"
+            className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          >
+            Apply as a therapist
+          </Link>
         </div>
       </section>
     </div>

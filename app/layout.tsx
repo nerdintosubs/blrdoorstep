@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { LocalBusinessSchema } from "@/components/local-business-schema";
+import { FloatingCta } from "@/components/floating-cta";
 import { siteConfig } from "@/lib/site";
 
 const bodyFont = Manrope({
@@ -50,14 +51,24 @@ export default function RootLayout({
       <body
         className={`${bodyFont.variable} ${displayFont.variable} antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-50 focus:rounded-full focus:bg-emerald-700 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+        >
+          Skip to content
+        </a>
         <div className="noise min-h-screen">
           <LocalBusinessSchema />
           <SiteHeader />
-          <main className="px-4 pb-24 pt-28 sm:px-6 lg:px-10">
+          <main
+            id="main-content"
+            className="px-4 pb-32 pt-28 sm:px-6 lg:px-10"
+          >
             {children}
           </main>
           <SiteFooter />
         </div>
+        <FloatingCta />
       </body>
     </html>
   );

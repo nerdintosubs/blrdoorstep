@@ -23,7 +23,7 @@ export function SiteFooter() {
             WhatsApp Booking
           </a>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
               Explore
@@ -40,6 +40,9 @@ export function SiteFooter() {
               </Link>
               <Link href="/contact" className="hover:text-emerald-700">
                 Contact
+              </Link>
+              <Link href="/careers" className="hover:text-emerald-700">
+                Therapist Careers
               </Link>
             </div>
           </div>
@@ -62,6 +65,18 @@ export function SiteFooter() {
               <p>Sat-Sun: {siteConfig.hours.weekends}</p>
               <p className="text-xs text-slate-500">
                 Public holidays: by appointment.
+              </p>
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Contact
+            </p>
+            <div className="mt-4 space-y-2 text-slate-700">
+              <p>{siteConfig.phoneDisplay}</p>
+              <p>{siteConfig.contactEmail}</p>
+              <p className="text-xs text-slate-500">
+                WhatsApp is the fastest way to book.
               </p>
             </div>
           </div>

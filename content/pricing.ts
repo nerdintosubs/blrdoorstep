@@ -40,3 +40,23 @@ export const pricingTiers = [
 
 export const pricingDisclaimer =
   "Prices include GST and standard travel within core Bangalore areas. After-hours bookings or extended travel may incur a surcharge shared at confirmation.";
+
+export const membershipPlans = [
+  {
+    name: "Monthly Relief",
+    price: "INR 11,499",
+    sessions: "4 sessions / month",
+    description:
+      "Best for ongoing stress management and desk-work recovery.",
+  },
+  {
+    name: "Recovery Intensive",
+    price: "INR 19,999",
+    sessions: "8 sessions / month",
+    description:
+      "Ideal for athletes, frequent travelers, or recurring pain relief.",
+  },
+];
+
+export const corporateNote =
+  "Corporate wellness sessions and team packages are available with advance scheduling.";

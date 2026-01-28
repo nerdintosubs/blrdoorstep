@@ -1,6 +1,8 @@
 import {
+  IconBadge,
   IconClock,
   IconLeaf,
+  IconPulse,
   IconShield,
   IconSpark,
 } from "@/components/icons";
@@ -32,6 +34,45 @@ export const benefits = [
   },
 ];
 
+export const stats = [
+  {
+    label: "Response window",
+    value: "10-15 mins",
+    description: "Average WhatsApp response during operating hours.",
+  },
+  {
+    label: "Setup time",
+    value: "15 mins",
+    description: "We arrive, sanitize, and set up quickly.",
+  },
+  {
+    label: "Session focus",
+    value: "100% therapeutic",
+    description: "Professional wellness service with strict conduct.",
+  },
+];
+
+export const howItWorks = [
+  {
+    title: "Book in minutes",
+    description:
+      "Send your preferred time and area on WhatsApp or the booking form.",
+    icon: IconBadge,
+  },
+  {
+    title: "We arrive prepared",
+    description:
+      "A verified therapist arrives with a portable table and sanitized kit.",
+    icon: IconShield,
+  },
+  {
+    title: "Personalized relief",
+    description:
+      "We calibrate pressure, focus areas, and finish with after-care tips.",
+    icon: IconPulse,
+  },
+];
+
 export const featuredServices = [
   {
     title: "Deep Tissue Relief",
@@ -51,6 +92,15 @@ export const featuredServices = [
     description:
       "Focused muscle work and stretching for faster recovery and mobility.",
   },
+];
+
+export const serviceTags = [
+  "Desk stress relief",
+  "Post-workout recovery",
+  "Sleep support",
+  "Travel fatigue reset",
+  "Head and shoulder tension",
+  "Aromatherapy calm",
 ];
 
 export const testimonials = [
@@ -99,4 +149,18 @@ export const safetyPoints = [
   "We follow strict hygiene protocols and sanitize all equipment.",
   "Right to refuse service in case of unsafe or inappropriate behavior.",
   "We do not offer any sexual or explicit services. Zero tolerance policy.",
+];
+
+export const therapistHighlights = [
+  "Flexible shifts and predictable booking flow.",
+  "Fair payouts with same-day settlement options.",
+  "Sanitized equipment provided for every session.",
+  "Client verification and safety escalation support.",
+];
+
+export const trustBadges = [
+  "Professional, non-explicit wellness",
+  "Background-verified therapists",
+  "Hygiene-first setup",
+  "Respectful client code of conduct",
 ];

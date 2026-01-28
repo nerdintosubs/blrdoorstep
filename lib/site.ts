@@ -5,6 +5,14 @@ const contactEmail =
 const digitsOnly = whatsappNumber.replace(/\D/g, "");
 const normalizedWhatsappNumber =
   digitsOnly.length === 10 ? `91${digitsOnly}` : digitsOnly;
+const phoneE164 = `+${normalizedWhatsappNumber}`;
+const phoneDisplay =
+  normalizedWhatsappNumber.length === 12
+    ? `+${normalizedWhatsappNumber.slice(0, 2)} ${normalizedWhatsappNumber.slice(
+        2,
+        7
+      )} ${normalizedWhatsappNumber.slice(7)}`
+    : `+${normalizedWhatsappNumber}`;
 
 export const siteConfig = {
   name: "Bangalore Doorstep Massage",
@@ -13,6 +21,8 @@ export const siteConfig = {
   url: "https://bangaloredoorstepmassage.online",
   whatsappNumber,
   normalizedWhatsappNumber,
+  phoneE164,
+  phoneDisplay,
   whatsappMessage:
     "Hi! I would like to book a doorstep massage in Bangalore. Please share available slots.",
   contactEmail,

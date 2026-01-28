@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { pricingDisclaimer, pricingTiers } from "@/content/pricing";
+import {
+  corporateNote,
+  membershipPlans,
+  pricingDisclaimer,
+  pricingTiers,
+} from "@/content/pricing";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -12,9 +17,7 @@ export default function PricingPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-16">
       <section className="surface-card space-y-6 p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          Pricing
-        </p>
+        <p className="section-label">Pricing</p>
         <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
           Clear tiers for every wellness need.
         </h1>
@@ -75,18 +78,30 @@ export default function PricingPage() {
         ))}
       </section>
 
+      <section className="grid gap-6 lg:grid-cols-2">
+        {membershipPlans.map((plan) => (
+          <div key={plan.name} className="glass-card p-6 sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
+              {plan.sessions}
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-slate-900">
+              {plan.name}
+            </h2>
+            <p className="mt-2 text-3xl font-semibold text-slate-900">
+              {plan.price}
+            </p>
+            <p className="mt-2 text-sm text-slate-600">{plan.description}</p>
+          </div>
+        ))}
+      </section>
+
       <section className="surface-card space-y-4 p-6 sm:p-7">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          Pricing notes
-        </p>
+        <p className="section-label">Pricing notes</p>
         <h2 className="font-display text-2xl text-slate-900">
           Transparent, flexible, and fair.
         </h2>
         <p className="text-sm text-slate-600">{pricingDisclaimer}</p>
-        <p className="text-sm text-slate-600">
-          Final quotes depend on therapist availability, travel distance, and
-          time of day. Ask us on WhatsApp for an exact total.
-        </p>
+        <p className="text-sm text-slate-600">{corporateNote}</p>
         <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-xs text-slate-600">
           <p className="font-semibold text-slate-900">Cancellation policy</p>
           <p className="mt-2">

@@ -10,10 +10,13 @@
   --accent: #d97706;
   --background-start: #f6f1ea;
   --background-end: #e6f1ee;
+  --fog: rgba(13, 148, 136, 0.08);
+  --mist: rgba(217, 119, 6, 0.08);
   --ring: rgba(15, 118, 110, 0.35);
   --radius: 20px;
   --shadow-soft: 0 24px 70px rgba(15, 118, 110, 0.15);
   --shadow-card: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --shadow-lift: 0 20px 50px rgba(15, 23, 42, 0.12);
 }
 
 @theme inline {
@@ -38,6 +41,8 @@
     --ring: rgba(45, 212, 191, 0.35);
     --background-start: #0f1515;
     --background-end: #0b1111;
+    --fog: rgba(45, 212, 191, 0.1);
+    --mist: rgba(251, 191, 36, 0.08);
   }
 }
 
@@ -74,6 +79,56 @@ body {
 .surface-glow {
   background: radial-gradient(circle at top, rgba(13, 148, 136, 0.15), transparent 55%),
     radial-gradient(circle at 80% 20%, rgba(217, 119, 6, 0.12), transparent 40%);
+}
+
+.glass-card {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(244, 251, 248, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow: var(--shadow-soft);
+}
+
+.grid-dots {
+  background-image: radial-gradient(var(--fog) 1px, transparent 1px),
+    radial-gradient(var(--mist) 1px, transparent 1px);
+  background-position: 0 0, 14px 14px;
+  background-size: 28px 28px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #047857;
+}
+
+.stat-pill {
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #047857;
+}
+
+.hero-ring {
+  box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.08),
+    0 0 0 1px rgba(16, 185, 129, 0.25);
+}
+
+.accent-gradient {
+  background: linear-gradient(90deg, #0f766e, #14b8a6, #0f766e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .fade-up {

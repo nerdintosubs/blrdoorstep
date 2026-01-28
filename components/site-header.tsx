@@ -11,6 +11,7 @@ const navItems = [
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/careers", label: "Therapists" },
 ];
 
 export function SiteHeader() {
@@ -43,6 +44,12 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <Link
+            href="/careers"
+            className="hidden rounded-full border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-800 transition hover:border-emerald-400 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 xl:inline-flex"
+          >
+            Join as Therapist
+          </Link>
           <a
             href={whatsappLink}
             target="_blank"
@@ -84,6 +91,12 @@ export function SiteHeader() {
           >
             Book on WhatsApp
           </a>
+          <Link
+            href="/careers"
+            className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-800 transition hover:border-emerald-400 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          >
+            Join as Therapist
+          </Link>
         </div>
       ) : null}
     </header>

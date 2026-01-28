@@ -1,4 +1,5 @@
 import { BookingForm } from "@/components/booking-form";
+import { IconLocation, IconPhone } from "@/components/icons";
 import { siteConfig, whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -11,9 +12,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-16">
       <section className="surface-card space-y-6 p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          Contact & Book
-        </p>
+        <p className="section-label">Contact & Book</p>
         <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
           Book your doorstep massage in minutes.
         </h1>
@@ -32,6 +31,12 @@ export default function ContactPage() {
             Book on WhatsApp
           </a>
           <a
+            href={`tel:${siteConfig.phoneE164}`}
+            className="inline-flex items-center justify-center rounded-full border border-emerald-200 px-6 py-3 text-sm font-semibold text-emerald-800 transition hover:border-emerald-400 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          >
+            Call {siteConfig.phoneDisplay}
+          </a>
+          <a
             href={`mailto:${siteConfig.contactEmail}`}
             className="inline-flex items-center justify-center rounded-full border border-emerald-200 px-6 py-3 text-sm font-semibold text-emerald-800 transition hover:border-emerald-400 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
           >
@@ -47,9 +52,7 @@ export default function ContactPage() {
         <BookingForm />
         <div className="space-y-6">
           <div className="surface-card space-y-4 p-6 sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Hours
-            </p>
+            <p className="section-label">Hours</p>
             <h2 className="font-display text-2xl text-slate-900">
               Flexible slots, every day.
             </h2>
@@ -65,9 +68,7 @@ export default function ContactPage() {
           </div>
 
           <div className="surface-card space-y-4 p-6 sm:p-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Service area map (text)
-            </p>
+            <p className="section-label">Service area map (text)</p>
             <h2 className="font-display text-2xl text-slate-900">
               We cover most of Bangalore.
             </h2>
@@ -84,9 +85,22 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-emerald-100 bg-emerald-50 px-5 py-4 text-xs text-emerald-900">
-            Your information is used only to confirm bookings. We do not share
-            or sell your contact details.
+          <div className="glass-card space-y-4 p-6 sm:p-7">
+            <p className="section-label">Fast response</p>
+            <div className="space-y-3 text-sm text-slate-700">
+              <p className="flex items-center gap-2">
+                <IconPhone className="h-4 w-4 text-emerald-600" />
+                WhatsApp: {siteConfig.phoneDisplay}
+              </p>
+              <p className="flex items-center gap-2">
+                <IconLocation className="h-4 w-4 text-emerald-600" />
+                Service areas across Bangalore
+              </p>
+              <p className="text-xs text-slate-500">
+                Your information is used only to confirm bookings. We do not
+                share or sell contact details.
+              </p>
+            </div>
           </div>
         </div>
       </section>

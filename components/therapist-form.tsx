@@ -3,36 +3,27 @@
 import type { ChangeEvent, FormEvent } from "react";
 import { useMemo, useState } from "react";
 import {
-  bookingSchema,
-  defaultBookingValues,
-  type BookingFormValues,
-} from "@/lib/booking";
+  defaultTherapistValues,
+  therapistSchema,
+  type TherapistFormValues,
+} from "@/lib/therapist";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-const serviceOptions = [
-  "Swedish Relaxation",
-  "Deep Tissue Therapy",
-  "Sports Recovery",
-  "Head, Neck & Shoulder",
-  "Aroma Calm Ritual",
-  "Prenatal Comfort",
-];
-
-export function BookingForm() {
+export function TherapistForm() {
   const [values, setValues] =
-    useState<BookingFormValues>(defaultBookingValues);
+    useState<TherapistFormValues>(defaultTherapistValues);
   const [errors, setErrors] = useState<
-    Partial<Record<keyof BookingFormValues, string>>
+    Partial<Record<keyof TherapistFormValues, string>>
   >({});
   const [status, setStatus] = useState<FormStatus>("idle");
 
   const statusMessage = useMemo(() => {
     if (status === "success") {
-      return "Thanks! Your request has been sent. We will confirm shortly on WhatsApp.";
+      return "Thanks! We received your application and will reach out within 24 hours.";
     }
     if (status === "error") {
-      return "Something went wrong. Please try again or book directly on WhatsApp.";
+      return "Something went wrong. Please try again or WhatsApp us directly.";
     }
     return "";
   }, [status]);
@@ -49,12 +40,12 @@ export function BookingForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const parsed = bookingSchema.safeParse(values);
+    const parsed = therapistSchema.safeParse(values);
 
     if (!parsed.success) {
-      const fieldErrors: Partial<Record<keyof BookingFormValues, string>> = {};
+      const fieldErrors: Partial<Record<keyof TherapistFormValues, string>> = {};
       parsed.error.issues.forEach((issue) => {
-        const field = issue.path[0] as keyof BookingFormValues;
+        const field = issue.path[0] as keyof TherapistFormValues;
         fieldErrors[field] = issue.message;
       });
       setErrors(fieldErrors);
@@ -65,9 +56,9 @@ export function BookingForm() {
     setStatus("submitting");
     try {
       const formData = new URLSearchParams();
-      formData.append("form-name", "booking");
+      formData.append("form-name", "therapist-application");
       formData.append("bot-field", "");
-      (Object.keys(parsed.data) as Array<keyof BookingFormValues>).forEach(
+      (Object.keys(parsed.data) as Array<keyof TherapistFormValues>).forEach(
         (key) => {
           formData.append(key, parsed.data[key] ?? "");
         }
@@ -84,7 +75,7 @@ export function BookingForm() {
       }
 
       setStatus("success");
-      setValues(defaultBookingValues);
+      setValues(defaultTherapistValues);
       setErrors({});
     } catch {
       setStatus("error");
@@ -93,37 +84,38 @@ export function BookingForm() {
 
   return (
     <div className="surface-card relative overflow-hidden p-6 sm:p-8">
-      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-emerald-100 blur-3xl" />
+      <div className="absolute -left-16 -top-10 h-36 w-36 rounded-full bg-emerald-100 blur-3xl" />
       <div className="relative space-y-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Book a Session
+            Therapist Application
           </p>
           <h3 className="font-display text-2xl text-slate-900 sm:text-3xl">
-            Share your details and we will confirm on WhatsApp
+            Join our professional wellness team
           </h3>
           <p className="mt-2 text-sm text-slate-600">
-            We typically respond within 10-15 minutes during working hours.
+            We prioritize safety, respect, and quality. Share your experience
+            and preferred working areas.
           </p>
         </div>
         <form
-          name="booking"
+          name="therapist-application"
           method="POST"
           action="/__forms.html"
           onSubmit={handleSubmit}
           className="space-y-4"
         >
-          <input type="hidden" name="form-name" value="booking" />
+          <input type="hidden" name="form-name" value="therapist-application" />
           <input type="hidden" name="bot-field" />
 
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="space-y-2 text-sm font-medium text-slate-700">
-              Name
+              Full Name
               <input
                 name="name"
                 value={values.name}
                 onChange={handleChange}
-                placeholder="Your full name"
+                placeholder="Your name"
                 className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               />
               {errors.name ? (
@@ -146,59 +138,68 @@ export function BookingForm() {
             </label>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              Bangalore Area
-              <input
-                name="area"
-                value={values.area}
-                onChange={handleChange}
-                placeholder="Indiranagar, HSR, Whitefield..."
-                className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-              />
-              {errors.area ? (
-                <span className="text-xs text-rose-500">{errors.area}</span>
-              ) : null}
-            </label>
-
-            <label className="space-y-2 text-sm font-medium text-slate-700">
-              Preferred Time
-              <input
-                name="preferredTime"
-                value={values.preferredTime}
-                onChange={handleChange}
-                placeholder="Tomorrow 7-9 PM"
-                className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-              />
-              {errors.preferredTime ? (
-                <span className="text-xs text-rose-500">
-                  {errors.preferredTime}
-                </span>
-              ) : null}
-            </label>
-          </div>
-
           <label className="space-y-2 text-sm font-medium text-slate-700">
-            Service Type
-            <select
-              name="serviceType"
-              value={values.serviceType}
+            Experience
+            <input
+              name="experience"
+              value={values.experience}
               onChange={handleChange}
+              placeholder="e.g., 3 years, spa background"
               className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-            >
-              <option value="">Select a service</option>
-              {serviceOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            {errors.serviceType ? (
+            />
+            {errors.experience ? (
               <span className="text-xs text-rose-500">
-                {errors.serviceType}
+                {errors.experience}
               </span>
             ) : null}
           </label>
+
+          <label className="space-y-2 text-sm font-medium text-slate-700">
+            Certifications / Training
+            <input
+              name="certifications"
+              value={values.certifications}
+              onChange={handleChange}
+              placeholder="Massage certification, physiotherapy, etc."
+              className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            />
+            {errors.certifications ? (
+              <span className="text-xs text-rose-500">
+                {errors.certifications}
+              </span>
+            ) : null}
+          </label>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="space-y-2 text-sm font-medium text-slate-700">
+              Availability
+              <input
+                name="availability"
+                value={values.availability}
+                onChange={handleChange}
+                placeholder="Weekdays 10am-7pm"
+                className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              />
+              {errors.availability ? (
+                <span className="text-xs text-rose-500">
+                  {errors.availability}
+                </span>
+              ) : null}
+            </label>
+            <label className="space-y-2 text-sm font-medium text-slate-700">
+              Preferred Areas
+              <input
+                name="areas"
+                value={values.areas}
+                onChange={handleChange}
+                placeholder="HSR, Koramangala, Indiranagar"
+                className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              />
+              {errors.areas ? (
+                <span className="text-xs text-rose-500">{errors.areas}</span>
+              ) : null}
+            </label>
+          </div>
 
           <label className="space-y-2 text-sm font-medium text-slate-700">
             Notes (optional)
@@ -206,8 +207,8 @@ export function BookingForm() {
               name="notes"
               value={values.notes}
               onChange={handleChange}
-              placeholder="Focus areas, pressure preference, or health notes"
-              rows={4}
+              placeholder="Anything else we should know?"
+              rows={3}
               className="w-full resize-none rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
             />
             {errors.notes ? (
@@ -220,7 +221,9 @@ export function BookingForm() {
             disabled={status === "submitting"}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
           >
-            {status === "submitting" ? "Sending..." : "Submit booking request"}
+            {status === "submitting"
+              ? "Submitting..."
+              : "Submit application"}
           </button>
         </form>
 

@@ -66,3 +66,32 @@ export const serviceAreasExtended = [
   "Hebbal",
   "Yelahanka",
 ];
+
+export const sessionFlow = [
+  {
+    title: "Arrival & setup",
+    description:
+      "Therapist arrives with a portable table, linens, oils, and sanitizer.",
+  },
+  {
+    title: "Consultation",
+    description:
+      "We discuss focus areas, pressure preferences, and contraindications.",
+  },
+  {
+    title: "Therapy session",
+    description:
+      "Customized massage with adjustments during the session.",
+  },
+  {
+    title: "After-care",
+    description:
+      "Hydration tips and simple stretches to extend the benefit.",
+  },
+];
+
+export const sessionNotes = [
+  "Please avoid heavy meals within 60 minutes of the session.",
+  "Let us know about recent injuries, surgeries, or medical conditions.",
+  "We do not provide any sexual or explicit services.",
+];

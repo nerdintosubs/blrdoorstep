@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { addOns, serviceAreasExtended, services } from "@/content/services";
+import {
+  addOns,
+  serviceAreasExtended,
+  services,
+  sessionFlow,
+  sessionNotes,
+} from "@/content/services";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -12,9 +18,7 @@ export default function ServicesPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-16">
       <section className="surface-card space-y-6 p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          Services
-        </p>
+        <p className="section-label">Services</p>
         <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
           Tailored therapies delivered to your doorstep.
         </h1>
@@ -67,9 +71,7 @@ export default function ServicesPage() {
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="surface-card p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Add-ons
-          </p>
+          <p className="section-label">Add-ons</p>
           <h2 className="font-display text-2xl text-slate-900">
             Enhance your session.
           </h2>
@@ -83,23 +85,46 @@ export default function ServicesPage() {
           </p>
         </div>
         <div className="surface-card p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Service areas
-          </p>
+          <p className="section-label">Session flow</p>
           <h2 className="font-display text-2xl text-slate-900">
-            Covering key Bangalore neighborhoods.
+            What to expect from arrival to after-care.
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            We cover central and south Bangalore with advance bookings available
-            for other areas.
-          </p>
-          <div className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
-            {serviceAreasExtended.map((area) => (
-              <span key={area} className="rounded-full bg-emerald-50 px-3 py-2">
-                {area}
-              </span>
+          <div className="mt-4 space-y-3 text-sm text-slate-700">
+            {sessionFlow.map((step, index) => (
+              <div key={step.title} className="flex gap-3">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-50 text-xs font-semibold text-emerald-700">
+                  {index + 1}
+                </span>
+                <div>
+                  <p className="font-semibold text-slate-900">{step.title}</p>
+                  <p className="text-sm text-slate-600">{step.description}</p>
+                </div>
+              </div>
             ))}
           </div>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-xs text-slate-500">
+            {sessionNotes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="surface-card p-6 sm:p-7">
+        <p className="section-label">Service areas</p>
+        <h2 className="font-display text-2xl text-slate-900">
+          Covering key Bangalore neighborhoods.
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          We cover central and south Bangalore with advance bookings available
+          for other areas.
+        </p>
+        <div className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-3">
+          {serviceAreasExtended.map((area) => (
+            <span key={area} className="rounded-full bg-emerald-50 px-3 py-2">
+              {area}
+            </span>
+          ))}
         </div>
       </section>
     </div>

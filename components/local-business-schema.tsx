@@ -1,9 +1,7 @@
 import { siteConfig } from "@/lib/site";
 
 export function LocalBusinessSchema() {
-  const telephone = siteConfig.normalizedWhatsappNumber.startsWith("+")
-    ? siteConfig.normalizedWhatsappNumber
-    : `+${siteConfig.normalizedWhatsappNumber}`;
+  const telephone = siteConfig.phoneE164;
   const schema = {
     "@context": "https://schema.org",
     "@type": "HealthAndBeautyBusiness",

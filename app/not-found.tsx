@@ -3,9 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 py-24 text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-        Page not found
-      </p>
+      <p className="section-label">Page not found</p>
       <h1 className="font-display text-4xl text-slate-900">
         This page took a wellness break.
       </h1>

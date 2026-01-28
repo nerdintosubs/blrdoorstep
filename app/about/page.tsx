@@ -11,9 +11,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-16">
       <section className="surface-card space-y-6 p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          About us
-        </p>
+        <p className="section-label">About us</p>
         <h1 className="font-display text-4xl text-slate-900 sm:text-5xl">
           Wellness care built on trust, hygiene, and respect.
         </h1>
@@ -42,9 +40,7 @@ export default function AboutPage() {
 
       <section className="grid gap-6 lg:grid-cols-2">
         <div className="surface-card space-y-4 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Therapist standards
-          </p>
+          <p className="section-label">Therapist standards</p>
           <h2 className="font-display text-2xl text-slate-900">
             Verified professionals only.
           </h2>
@@ -61,9 +57,7 @@ export default function AboutPage() {
           </ul>
         </div>
         <div className="surface-card space-y-4 p-6 sm:p-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-            Hygiene protocols
-          </p>
+          <p className="section-label">Hygiene protocols</p>
           <h2 className="font-display text-2xl text-slate-900">
             Clinic-grade cleanliness at home.
           </h2>
@@ -81,9 +75,7 @@ export default function AboutPage() {
       </section>
 
       <section id="policies" className="surface-card space-y-6 p-6 sm:p-7">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-          Policies & conduct
-        </p>
+        <p className="section-label">Policies & conduct</p>
         <h2 className="font-display text-2xl text-slate-900">
           Respectful, non-explicit service only.
         </h2>
@@ -111,7 +103,9 @@ export default function AboutPage() {
         </div>
         <div className="grid gap-4 text-sm text-slate-700 sm:grid-cols-2">
           <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-4">
-            <p className="font-semibold text-slate-900">Cancellation & reschedule</p>
+            <p className="font-semibold text-slate-900">
+              Cancellation & reschedule
+            </p>
             <ul className="mt-2 list-disc space-y-2 pl-5">
               <li>Free reschedule up to 12 hours before the slot.</li>
               <li>50% fee within 12 hours of the appointment.</li>
