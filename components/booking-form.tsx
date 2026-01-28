@@ -1,12 +1,13 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   bookingSchema,
   defaultBookingValues,
   type BookingFormValues,
 } from "@/lib/booking";
+import { loadAttribution, type AttributionData } from "@/lib/marketing";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -26,6 +27,15 @@ export function BookingForm() {
     Partial<Record<keyof BookingFormValues, string>>
   >({});
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [attribution, setAttribution] = useState<AttributionData>({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: "",
+    landing_page: "",
+    referrer: "",
+  });
 
   const statusMessage = useMemo(() => {
     if (status === "success") {
@@ -36,6 +46,10 @@ export function BookingForm() {
     }
     return "";
   }, [status]);
+
+  useEffect(() => {
+    setAttribution(loadAttribution());
+  }, []);
 
   function handleChange(
     event: ChangeEvent<
@@ -67,6 +81,13 @@ export function BookingForm() {
       const formData = new URLSearchParams();
       formData.append("form-name", "booking");
       formData.append("bot-field", "");
+      formData.append("utm_source", attribution.utm_source);
+      formData.append("utm_medium", attribution.utm_medium);
+      formData.append("utm_campaign", attribution.utm_campaign);
+      formData.append("utm_term", attribution.utm_term);
+      formData.append("utm_content", attribution.utm_content);
+      formData.append("landing_page", attribution.landing_page);
+      formData.append("referrer", attribution.referrer);
       (Object.keys(parsed.data) as Array<keyof BookingFormValues>).forEach(
         (key) => {
           formData.append(key, parsed.data[key] ?? "");
@@ -115,6 +136,25 @@ export function BookingForm() {
         >
           <input type="hidden" name="form-name" value="booking" />
           <input type="hidden" name="bot-field" />
+          <input type="hidden" name="utm_source" value={attribution.utm_source} />
+          <input type="hidden" name="utm_medium" value={attribution.utm_medium} />
+          <input
+            type="hidden"
+            name="utm_campaign"
+            value={attribution.utm_campaign}
+          />
+          <input type="hidden" name="utm_term" value={attribution.utm_term} />
+          <input
+            type="hidden"
+            name="utm_content"
+            value={attribution.utm_content}
+          />
+          <input
+            type="hidden"
+            name="landing_page"
+            value={attribution.landing_page}
+          />
+          <input type="hidden" name="referrer" value={attribution.referrer} />
 
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="space-y-2 text-sm font-medium text-slate-700">

@@ -5,6 +5,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { LocalBusinessSchema } from "@/components/local-business-schema";
 import { FloatingCta } from "@/components/floating-cta";
+import { UtmTracker } from "@/components/utm-tracker";
+import { Analytics } from "@/components/analytics";
 import { siteConfig } from "@/lib/site";
 
 const bodyFont = Manrope({
@@ -59,6 +61,8 @@ export default function RootLayout({
         </a>
         <div className="noise min-h-screen">
           <LocalBusinessSchema />
+          <UtmTracker />
+          <Analytics />
           <SiteHeader />
           <main
             id="main-content"
