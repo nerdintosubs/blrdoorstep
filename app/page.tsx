@@ -13,11 +13,14 @@ import {
 } from "@/content/home";
 import { membershipPlans, pricingDisclaimer, pricingTiers } from "@/content/pricing";
 import { IconLocation, IconPhone } from "@/components/icons";
+import { FaqSchema } from "@/components/faq-schema";
 import { siteConfig, whatsappLink } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl space-y-24">
+      <FaqSchema />
+
       <section className="grid-dots surface-glow relative overflow-hidden rounded-[32px] border border-white/40 bg-white/85 px-6 py-16 shadow-[0_32px_90px_rgba(15,118,110,0.2)] sm:px-10 lg:px-16">
         <div className="absolute -left-20 -top-20 h-56 w-56 rounded-full bg-emerald-200/60 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-48 w-48 rounded-full bg-amber-100/60 blur-3xl" />
@@ -166,6 +169,37 @@ export default function HomePage() {
             Share your focus area and preferred pressure in the booking form or
             WhatsApp chat.
           </p>
+        </div>
+      </section>
+
+      <section className="surface-card space-y-6 p-6 sm:p-7">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="section-label">Service areas</p>
+            <h2 className="font-display text-3xl text-slate-900 sm:text-4xl">
+              We reach you across Bangalore.
+            </h2>
+            <p className="text-sm text-slate-600">
+              Same-day availability in core neighborhoods; share your pin for the fastest
+              slot.
+            </p>
+          </div>
+          <a
+            href={whatsappLink}
+            className="inline-flex items-center justify-center rounded-full border border-emerald-200 px-5 py-2 text-sm font-semibold text-emerald-800 transition hover:border-emerald-400 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          >
+            Check availability
+          </a>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {siteConfig.serviceAreas.map((area) => (
+            <span
+              key={area}
+              className="rounded-full border border-emerald-100 bg-white px-3 py-2 text-xs font-semibold text-emerald-800"
+            >
+              {area}
+            </span>
+          ))}
         </div>
       </section>
 
