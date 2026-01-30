@@ -1,0 +1,23 @@
+version: 1
+execution:
+  dry_run_default: true
+idempotency:
+  enabled: true
+  key_fields:
+    - entity_id
+    - sequence_id
+    - step_id
+  window_hours: 24
+suppression_lists:
+  enabled: true
+  sources:
+    - opt_out
+    - do_not_contact
+    - complaints
+  match_fields:
+    - phone
+    - email
+  apply_to_channels:
+    - whatsapp
+    - email
+    - sms

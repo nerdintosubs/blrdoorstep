@@ -1,0 +1,65 @@
+version: 1
+sequences:
+  - id: non_booked_nurture_whatsapp_v1
+    channel: whatsapp
+    max_touches: 5
+    stop_on_booking: true
+    opt_out_keyword: "STOP"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        message: "Hi {{first_name}}, need any help completing your booking? Reply with your preferred time. Reply STOP to opt out."
+      - step_id: 2
+        day_offset: 1
+        message: "We can match a therapist in your language. Want to proceed? Reply STOP to opt out."
+      - step_id: 3
+        day_offset: 3
+        message: "Reminder: booking takes 2 minutes here: {{booking_link}}. Reply STOP to opt out."
+      - step_id: 4
+        day_offset: 5
+        message: "Can I assist with your booking or answer questions? Reply STOP to opt out."
+      - step_id: 5
+        day_offset: 7
+        message: "Last check-in for now. Reply if you'd like to book. Reply STOP to opt out."
+  - id: non_booked_nurture_email_v1
+    channel: email
+    max_touches: 5
+    stop_on_booking: true
+    opt_out_keyword: "UNSUBSCRIBE"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        subject: "Complete your booking"
+        body: |
+          Hi {{first_name}},
+
+          Thanks for reaching out. You can complete your booking here: {{booking_link}}.
+          Reply if you need help.
+      - step_id: 2
+        day_offset: 2
+        subject: "Need a therapist in a specific language?"
+        body: |
+          Hi {{first_name}},
+
+          We can match your preferred language and time. Use this link to book: {{booking_link}}.
+      - step_id: 3
+        day_offset: 4
+        subject: "Quick reminder"
+        body: |
+          Hi {{first_name}},
+
+          Booking takes about 2 minutes. If you'd like to proceed: {{booking_link}}.
+      - step_id: 4
+        day_offset: 6
+        subject: "Any questions before booking?"
+        body: |
+          Hi {{first_name}},
+
+          Happy to help with questions or scheduling. Reply anytime.
+      - step_id: 5
+        day_offset: 8
+        subject: "Closing the loop"
+        body: |
+          Hi {{first_name}},
+
+          This will be our last follow-up for now. Reply if you still want to book.

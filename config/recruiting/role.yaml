@@ -1,0 +1,89 @@
+version: 1
+role_id: therapist
+title: Therapist (On-site)
+location:
+  primary_city: Bangalore
+  primary_region: Karnataka
+  on_site_required: true
+  allow_outside_city_with_relocation: true
+  relocation_confirmation_required: true
+compensation:
+  currency: INR
+  type: monthly
+  max_amount: 50000
+  benefits:
+    - free food
+    - free accommodation
+target_profile:
+  experience_years:
+    preferred_min: 0
+    preferred_max: 2
+    acceptable_max: 5
+  preference_notes: "Freshers preferred; early-career candidates prioritized."
+copy_guidelines:
+  inclusion_language: "women preferred / women encouraged to apply"
+  avoid_exclusionary_phrasing: true
+  banned_phrases:
+    - "women only"
+    - "female only"
+    - "men not allowed"
+eligibility_rules:
+  - id: location_or_relocation
+    description: "Candidate must be in Bangalore or explicitly confirm relocation to Bangalore for on-site work."
+    condition: "current_city == 'Bangalore' OR relocation_confirmed == true"
+  - id: on_site_work
+    description: "On-site work only."
+    condition: "work_mode == 'in_person'"
+filters:
+  include_if:
+    - "current_city == 'Bangalore'"
+    - "relocation_confirmed == true"
+  exclude_if:
+    - "current_city != 'Bangalore' AND relocation_confirmed != true"
+validation:
+  required_fields:
+    - full_name
+    - phone
+    - current_city
+    - relocation_confirmed
+    - experience_years
+    - work_mode
+  enforce_on_create: true
+  enforce_on_update: true
+scoring_weights:
+  experience_years:
+    "0-2": 35
+    "3-5": 10
+    "6+": 0
+  location:
+    bangalore: 30
+    relocation_confirmed: 15
+  availability:
+    immediate: 15
+    within_30_days: 10
+    later: 0
+  language_match: 10
+sourcing:
+  only_bangalore_segments: true
+  segment_rules:
+    must_include_city: "Bangalore"
+    forbidden_cities:
+      - "Mumbai"
+      - "Delhi"
+      - "Hyderabad"
+  segments:
+    - id: blr_freshers_beauty_wellness
+      name: "Bangalore freshers in beauty/wellness"
+      city: "Bangalore"
+      experience_years_max: 2
+    - id: blr_hospitality_freshers
+      name: "Bangalore hospitality freshers open to wellness"
+      city: "Bangalore"
+      experience_years_max: 2
+  queries:
+    - "\"massage therapist\" fresher Bangalore"
+    - "\"spa therapist\" Bangalore 0-2 years"
+    - "\"beauty therapist\" Bangalore fresher"
+    - "\"wellness\" hiring Bangalore fresher"
+notes:
+  policy: "Outside Bangalore requires explicit relocation confirmation."

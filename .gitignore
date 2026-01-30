@@ -43,3 +43,8 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Netlify OpenAPI CLI artifacts
+/tools/netlify-openapi-cli/generated
+/tools/netlify-openapi-cli/spec/netlify-openapi.json
+/tools/netlify-openapi-cli/node_modules

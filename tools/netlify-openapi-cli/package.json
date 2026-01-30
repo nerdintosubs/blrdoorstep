@@ -1,0 +1,27 @@
+{
+  "name": "netlify-openapi-cli",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "netlify-openapi": "./cli.mjs"
+  },
+  "scripts": {
+    "cli": "node ./cli.mjs",
+    "spec:sync": "node ./scripts/sync-spec.mjs",
+    "generate": "npm run spec:sync && npx openapi-typescript spec/netlify-openapi.json -o generated/netlify-openapi.ts",
+    "cli:typed": "npx tsx src/typed-cli.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@netlify/open-api": "latest",
+    "commander": "latest",
+    "openapi-fetch": "latest",
+    "swagger-client": "latest"
+  },
+  "devDependencies": {
+    "openapi-typescript": "latest",
+    "swagger2openapi": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

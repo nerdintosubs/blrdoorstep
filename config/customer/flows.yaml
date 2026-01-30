@@ -1,0 +1,42 @@
+version: 1
+primary_conversion_path: "whatsapp_intake -> booking -> reminders"
+whatsapp_intake:
+  enabled: true
+  steps:
+    - step_id: category
+      prompt: "Which service category are you looking for? (e.g., relaxation, deep tissue, prenatal)"
+      field: category
+      required: true
+    - step_id: language
+      prompt: "Preferred language? (English/Kannada/Hindi)"
+      field: language
+      required: true
+    - step_id: mode
+      prompt: "Mode of session? (in-person/online)"
+      field: mode
+      required: true
+      allowed_values:
+        - in_person
+        - online
+    - step_id: start_time
+      prompt: "Preferred start time (date + time)?"
+      field: start_time
+      required: true
+    - step_id: booking_link
+      prompt: "Please complete your booking here: {{booking_link}}"
+      field: booking_link
+      required: true
+reminders:
+  enabled: true
+  schedule_minutes_before:
+    - 120
+    - 30
+  channels:
+    - whatsapp
+validation:
+  required_fields:
+    - category
+    - language
+    - mode
+    - start_time
+    - booking_link

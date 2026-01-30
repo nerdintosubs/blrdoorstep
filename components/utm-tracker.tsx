@@ -14,24 +14,23 @@ export function UtmTracker() {
     const landing_page = window.location.pathname;
     const referrer = document.referrer ?? "";
 
-    if (
-      utm_source ||
-      utm_medium ||
-      utm_campaign ||
-      utm_term ||
-      utm_content ||
-      landing_page
-    ) {
-      saveAttribution({
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_term,
-        utm_content,
-        landing_page,
-        referrer,
-      });
+    const hasUtm =
+      utm_source || utm_medium || utm_campaign || utm_term || utm_content;
+
+    const payload: Record<string, string> = {
+      landing_page,
+      referrer,
+    };
+
+    if (hasUtm) {
+      payload.utm_source = utm_source;
+      payload.utm_medium = utm_medium;
+      payload.utm_campaign = utm_campaign;
+      payload.utm_term = utm_term;
+      payload.utm_content = utm_content;
     }
+
+    saveAttribution(payload);
   }, []);
 
   return null;

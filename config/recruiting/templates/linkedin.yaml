@@ -1,0 +1,32 @@
+version: 1
+channel: linkedin
+sequences:
+  - id: therapist_fresher_intro
+    name: "Bangalore fresher outreach"
+    audience: "Therapist freshers in Bangalore"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        subject: "Bangalore therapist role (freshers encouraged)"
+        message: |
+          Hi {{first_name}},
+          We are hiring on-site therapists in Bangalore. Freshers are preferred and women are encouraged to apply.
+          Compensation is up to INR 50,000/month plus free food and accommodation.
+          Are you currently in Bangalore? If not, are you open to relocating to Bangalore for on-site work?
+      - step_id: 2
+        day_offset: 3
+        subject: "Quick follow-up"
+        message: |
+          Hi {{first_name}}, just checking in. If you are in Bangalore or open to relocate, I can share details
+          and a short intake form.
+  - id: therapist_referral_ping
+    name: "Bangalore referral request"
+    audience: "Local Bangalore network"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        subject: "Referral for Bangalore therapist role"
+        message: |
+          Hi {{first_name}}, we are hiring on-site therapists in Bangalore (freshers preferred, women encouraged to apply).
+          If you know someone in Bangalore (or open to relocate), can you refer them?
+          Compensation up to INR 50,000/month + free food and accommodation.

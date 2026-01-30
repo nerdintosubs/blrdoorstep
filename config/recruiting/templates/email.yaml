@@ -1,0 +1,33 @@
+version: 1
+channel: email
+sequences:
+  - id: therapist_email_sequence
+    name: "Bangalore therapist email outreach"
+    audience: "Therapist applicants"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        subject: "Therapist role in Bangalore (freshers encouraged)"
+        body: |
+          Hi {{first_name}},
+
+          We are hiring on-site therapists in Bangalore. Freshers are preferred and women are encouraged to apply.
+          Compensation is up to INR 50,000/month plus free food and accommodation.
+
+          Are you currently in Bangalore? If not, are you open to relocating to Bangalore for on-site work?
+          If yes, please reply with your experience (years) and earliest start date.
+      - step_id: 2
+        day_offset: 4
+        subject: "Quick follow-up on Bangalore therapist role"
+        body: |
+          Hi {{first_name}},
+
+          Following up to see if you are interested in the Bangalore therapist role.
+          If you are in Bangalore or open to relocate, I can share next steps.
+      - step_id: 3
+        day_offset: 7
+        subject: "Last note on Bangalore therapist opening"
+        body: |
+          Hi {{first_name}},
+
+          This is a final check-in. If you are in Bangalore or willing to relocate, reply and we will proceed.

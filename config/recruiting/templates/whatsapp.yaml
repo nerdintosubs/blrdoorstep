@@ -1,0 +1,18 @@
+version: 1
+channel: whatsapp
+sequences:
+  - id: therapist_whatsapp_screen
+    name: "Bangalore therapist screening"
+    audience: "Inbound therapist leads"
+    steps:
+      - step_id: 1
+        day_offset: 0
+        message: |
+          Hi {{first_name}}! We are hiring on-site therapists in Bangalore. Freshers preferred; women encouraged to apply.
+          Compensation up to INR 50,000/month + free food and accommodation.
+          Are you currently in Bangalore? If not, are you willing to relocate to Bangalore for on-site work?
+      - step_id: 2
+        day_offset: 1
+        message: |
+          Thanks! If yes, please share your experience (years) and preferred start date.
+          We will schedule a quick call.
