@@ -1,7 +1,6 @@
 const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "917259120770";
 const secondaryContactNumber = "919340903262";
-const contactEmail =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "blrhangouthub@icloud.com";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "blrhangouthub@icloud.com";
 
 const normalizeIndianNumber = (number: string) => {
   const digitsOnly = number.replace(/\D/g, "");
