@@ -1,18 +1,25 @@
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "9187351205";
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "917259120770";
+const secondaryContactNumber = "919340903262";
 const contactEmail =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "blrhangouthub@icloud.com";
 
-const digitsOnly = whatsappNumber.replace(/\D/g, "");
-const normalizedWhatsappNumber =
-  digitsOnly.length === 10 ? `91${digitsOnly}` : digitsOnly;
+const normalizeIndianNumber = (number: string) => {
+  const digitsOnly = number.replace(/\D/g, "");
+  return digitsOnly.length === 10 ? `91${digitsOnly}` : digitsOnly;
+};
+
+const formatPhoneDisplay = (normalizedNumber: string) =>
+  normalizedNumber.length === 12
+    ? `+${normalizedNumber.slice(0, 2)} ${normalizedNumber.slice(2, 7)} ${normalizedNumber.slice(7)}`
+    : `+${normalizedNumber}`;
+
+const normalizedWhatsappNumber = normalizeIndianNumber(whatsappNumber);
+const normalizedSecondaryContactNumber = normalizeIndianNumber(secondaryContactNumber);
 const phoneE164 = `+${normalizedWhatsappNumber}`;
-const phoneDisplay =
-  normalizedWhatsappNumber.length === 12
-    ? `+${normalizedWhatsappNumber.slice(0, 2)} ${normalizedWhatsappNumber.slice(
-        2,
-        7
-      )} ${normalizedWhatsappNumber.slice(7)}`
-    : `+${normalizedWhatsappNumber}`;
+const phoneDisplay = [
+  formatPhoneDisplay(normalizedWhatsappNumber),
+  formatPhoneDisplay(normalizedSecondaryContactNumber),
+].join(", ");
 
 export const siteConfig = {
   name: "Bangalore Doorstep Massage",
@@ -21,6 +28,8 @@ export const siteConfig = {
   url: "https://bangaloredoorstepmassage.online",
   whatsappNumber,
   normalizedWhatsappNumber,
+  secondaryContactNumber,
+  normalizedSecondaryContactNumber,
   phoneE164,
   phoneDisplay,
   whatsappMessage:
