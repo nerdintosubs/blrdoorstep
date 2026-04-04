@@ -39,8 +39,9 @@ Note: Run `npx playwright install` the first time to download browsers.
 
 ## Configuration
 Optional overrides:
-- WhatsApp number: `lib/site.ts` or `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env`.
+- Primary WhatsApp: `NEXT_PUBLIC_WHATSAPP_PRIMARY`
 - Contact email: `lib/site.ts` or `NEXT_PUBLIC_CONTACT_EMAIL` in `.env`.
+Default primary contact is `7068344125` (configured in `lib/site.ts`).
  - Analytics (optional):
    - GA4: `NEXT_PUBLIC_GA4_ID`
    - Meta Pixel: `NEXT_PUBLIC_META_PIXEL_ID`
