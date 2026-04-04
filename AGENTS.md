@@ -36,5 +36,5 @@
 
 ## Security & Configuration
 - Environment variables are documented in `.env.example`.
-- Update `NEXT_PUBLIC_WHATSAPP_NUMBER` and `NEXT_PUBLIC_CONTACT_EMAIL` when changing contact info.
+- Update `NEXT_PUBLIC_WHATSAPP_PRIMARY` and `NEXT_PUBLIC_CONTACT_EMAIL` when changing contact info.
 - Optional analytics IDs: `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_META_PIXEL_ID`.
